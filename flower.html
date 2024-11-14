@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jadii ga niii</title>
+    <style>
+        /* Reset gaya CSS bawaan */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: url(foto/th.jpg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        .container {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            font-size: 2em;
+            color: #e94e77;
+            margin-bottom: 20px;
+        }
+
+        p.message {
+            font-size: 1.2em;
+            color: #555;
+            display: none; /* Disembunyikan hingga tombol ditekan */
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background-color: #e94e77;
+            color: #fff;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #c53a5a;
+        }
+
+        /* Gaya untuk animasi bunga */
+        .flower {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-image: url(foto/kupu.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+            animation: float 8s linear infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Responsif untuk layar yang lebih kecil */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            body {
+                padding: auto;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            p.message {
+                font-size: 1em;
+            }
+
+            .btn {
+                font-size: 1em;
+                padding: 8px 16px;
+            }
+
+            .flower {
+                width: 20px;
+                height: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Happy 3 year Anniversary Dear</h1>
+        <button class="btn" onclick="showMessage()">Lihat Pesan</button>
+        <p class="message">“di tahunn ini kita jadi kan buat staycation di Pangandaran? Ahahahah”</p>
+    </div>
+
+    <script>
+        function showMessage() {
+            // Menampilkan pesan
+            document.querySelector('.message').style.display = 'block';
+            
+            // Membuat bunga berterbangan
+            for (let i = 0; i < 30; i++) {
+                createFlower();
+            }
+        }
+
+        function createFlower() {
+            const flower = document.createElement('div');
+            flower.classList.add('flower');
+            flower.style.left = Math.random() * 100 + 'vw';
+            flower.style.animationDuration = Math.random() * 3 + 5 + 's';
+            document.body.appendChild(flower);
+            
+            // Menghapus bunga setelah animasi selesai
+            setTimeout(() => {
+                flower.remove();
+            }, 8000);
+        }
+    </script>
+</body>
+</html>
